@@ -122,3 +122,4 @@ Desktop.ini
 
 # Debugging artifacts
 .vscode-test/
+/generated/prisma
