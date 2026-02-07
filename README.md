@@ -71,7 +71,7 @@ The application embodies a **minimal, calm, and intentional** aesthetic:
 
 Before you begin, ensure you have the following installed:
 
-- **[Bun](https://bun.sh/)** (v1.0.0 or higher) — JavaScript/TypeScript runtime
+- **[Bun](https://bun.sh/)** (latest version recommended) — JavaScript/TypeScript runtime
 - **[Docker](https://www.docker.com/)** — For running PostgreSQL
 - **[Git](https://git-scm.com/)** — Version control
 
@@ -97,7 +97,7 @@ Before you begin, ensure you have the following installed:
    Create a `.env` file in the root directory:
 
    ```env
-   DATABASE_URL="postgresql://user:password@localhost:5432/kiromoku"
+   DATABASE_URL="postgresql://YOUR_USERNAME:YOUR_PASSWORD@localhost:5432/kiromoku"
    # Add other environment variables as needed
    ```
 
