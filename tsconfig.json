@@ -1,17 +1,23 @@
 {
   "compilerOptions": {
-    "strict": true,
-    "target": "esnext",
-    "noEmit": true,
-    "isolatedModules": true,
-    "moduleDetection": "force",
+    "baseUrl": ".",
     "downlevelIteration": true,
     "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "bundler",
-    "skipLibCheck": true,
-    "noUncheckedIndexedAccess": true,
     "exactOptionalPropertyTypes": true,
-    "jsx": "react-jsx"
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "module": "esnext",
+    "moduleDetection": "force",
+    "moduleResolution": "bundler",
+    "noEmit": true,
+    "noUncheckedIndexedAccess": true,
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    },
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "esnext"
   }
 }
