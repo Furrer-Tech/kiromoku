@@ -1,11 +1,15 @@
 {
   "name": "kiromoku",
   "version": "0.0.0",
-  "type": "module",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "waku dev",
     "build": "waku build",
+    "format": "oxfmt",
+    "format:check": "oxfmt --check",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix",
     "start": "waku start"
   },
   "dependencies": {
@@ -20,6 +24,8 @@
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.0",
     "babel-plugin-react-compiler": "^1.0.0",
+    "oxfmt": "^0.28.0",
+    "oxlint": "^1.43.0",
     "tailwindcss": "^4.1.18",
     "typescript": "^5.9.3"
   }

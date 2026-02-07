@@ -59,12 +59,12 @@ The application should feel:
 
 ### Color Palette
 
-| Element | Color Name | Hex Code | Purpose |
-|---------|------------|----------|---------|
-| Background | Canvas | `#F4F1ED` | A desaturated, grounded base |
-| Primary Text | Night Sky | `#32302F` | Deep charcoal for high readability |
-| Accent | Matcha/Sage | `#8B9474` | Calm, organic green for active states |
-| Warm Neutral | Cedar | `#D9C5B2` | Hover states, progress bars |
+| Element      | Color Name  | Hex Code  | Purpose                               |
+| ------------ | ----------- | --------- | ------------------------------------- |
+| Background   | Canvas      | `#F4F1ED` | A desaturated, grounded base          |
+| Primary Text | Night Sky   | `#32302F` | Deep charcoal for high readability    |
+| Accent       | Matcha/Sage | `#8B9474` | Calm, organic green for active states |
+| Warm Neutral | Cedar       | `#D9C5B2` | Hover states, progress bars           |
 
 ### Typography Considerations (TBD)
 
@@ -78,65 +78,65 @@ The application should feel:
 
 ### Runtime & Package Manager
 
-| Technology | Purpose |
-|------------|---------|
+| Technology             | Purpose                                                                                                                                                    |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [Bun](https://bun.sh/) | JavaScript/TypeScript runtime and package manager. Replaces Node.js and npm. Native TypeScript support, fast installs, built-in test runner compatibility. |
 
 ### Frontend
 
-| Technology | Purpose |
-|------------|---------|
-| [TypeScript](https://www.typescriptlang.org/) | Type safety across the full stack |
-| [React](https://react.dev/) | UI component library |
-| [Waku](https://waku.gg/) | Minimal React framework with React Server Components support (built on Vite) |
-| [Tailwind CSS](https://tailwindcss.com/) | Utility-first styling |
-| [shadcn/ui](https://ui.shadcn.com/) | Accessible, customizable component primitives |
+| Technology                                    | Purpose                                                                      |
+| --------------------------------------------- | ---------------------------------------------------------------------------- |
+| [TypeScript](https://www.typescriptlang.org/) | Type safety across the full stack                                            |
+| [React](https://react.dev/)                   | UI component library                                                         |
+| [Waku](https://waku.gg/)                      | Minimal React framework with React Server Components support (built on Vite) |
+| [Tailwind CSS](https://tailwindcss.com/)      | Utility-first styling                                                        |
+| [shadcn/ui](https://ui.shadcn.com/)           | Accessible, customizable component primitives                                |
 
 ### Backend
 
-| Technology | Purpose |
-|------------|---------|
-| [Hono](https://hono.dev/) | Lightweight, fast web framework for API routes. Built for modern runtimes including Bun. |
+| Technology                                  | Purpose                                                                                                   |
+| ------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| [Hono](https://hono.dev/)                   | Lightweight, fast web framework for API routes. Built for modern runtimes including Bun.                  |
 | [Better Auth](https://www.better-auth.com/) | Authentication library. Handles user accounts, sessions, and auth flows with Prisma and Hono integration. |
-| [Prisma](https://www.prisma.io/) | Type-safe ORM for PostgreSQL. Handles schema definition, migrations, seeding, and queries. |
-| [PostgreSQL](https://www.postgresql.org/) | Relational database |
+| [Prisma](https://www.prisma.io/)            | Type-safe ORM for PostgreSQL. Handles schema definition, migrations, seeding, and queries.                |
+| [PostgreSQL](https://www.postgresql.org/)   | Relational database                                                                                       |
 
 ### Testing
 
-| Technology | Purpose |
-|------------|---------|
-| [Vitest](https://vitest.dev/) | Unit and integration testing (pairs with Vite/Waku) |
-| [Playwright](https://playwright.dev/) | End-to-end browser testing for full user flows |
+| Technology                                            | Purpose                                                                   |
+| ----------------------------------------------------- | ------------------------------------------------------------------------- |
+| [Vitest](https://vitest.dev/)                         | Unit and integration testing (pairs with Vite/Waku)                       |
+| [Playwright](https://playwright.dev/)                 | End-to-end browser testing for full user flows                            |
 | [@hono/testing](https://hono.dev/docs/guides/testing) | Hono's built-in test helpers for API endpoint testing (works with Vitest) |
-| [Testing Library](https://testing-library.com/) | React component testing |
+| [Testing Library](https://testing-library.com/)       | React component testing                                                   |
 
 ### Tooling
 
-| Technology | Purpose |
-|------------|---------|
-| [OXC (Oxlint)](https://oxc.rs/) | Fast linting written in Rust (replaces ESLint) |
-| [OXC (Oxfmt)](https://oxc.rs/) | Fast formatting written in Rust (replaces Prettier) |
+| Technology                      | Purpose                                             |
+| ------------------------------- | --------------------------------------------------- |
+| [OXC (Oxlint)](https://oxc.rs/) | Fast linting written in Rust (replaces ESLint)      |
+| [OXC (Oxfmt)](https://oxc.rs/)  | Fast formatting written in Rust (replaces Prettier) |
 
 ### DevOps & Infrastructure
 
-| Technology | Purpose |
-|------------|---------|
-| [Docker](https://www.docker.com/) | Containerization for development and deployment |
-| Docker Compose | Multi-container orchestration (local dev) |
-| Git / GitHub | Version control |
-| [GitHub Actions](https://github.com/features/actions) | CI/CD pipeline automation |
-| [Azure](https://azure.microsoft.com/) | Cloud hosting platform |
+| Technology                                            | Purpose                                         |
+| ----------------------------------------------------- | ----------------------------------------------- |
+| [Docker](https://www.docker.com/)                     | Containerization for development and deployment |
+| Docker Compose                                        | Multi-container orchestration (local dev)       |
+| Git / GitHub                                          | Version control                                 |
+| [GitHub Actions](https://github.com/features/actions) | CI/CD pipeline automation                       |
+| [Azure](https://azure.microsoft.com/)                 | Cloud hosting platform                          |
 
 ### Project Management
 
-| Technology | Purpose |
-|------------|---------|
+| Technology                    | Purpose                                             |
+| ----------------------------- | --------------------------------------------------- |
 | [Linear](https://linear.app/) | Issue tracking, project management, sprint planning |
 
 ### External APIs
 
-| API | Purpose |
-|-----|---------|
+| API                                                                       | Purpose                     |
+| ------------------------------------------------------------------------- | --------------------------- |
 | [MyAnimeList API v2](https://myanimelist.net/apiconfig/references/api/v2) | Anime and manga data source |
 
 ---
@@ -150,6 +150,7 @@ This section documents key architectural choices and the reasoning behind them. 
 **Decision:** Use Bun instead of Node.js.
 
 **Why:**
+
 - Native TypeScript execution (no compilation step for development)
 - Significantly faster package installs
 - Built-in bundler and test runner compatibility
@@ -157,6 +158,7 @@ This section documents key architectural choices and the reasoning behind them. 
 - Learning a modern runtime is a resume differentiator
 
 **Trade-offs:**
+
 - Smaller community than Node.js
 - Some npm packages may have edge-case compatibility issues
 - Less established in enterprise environments (though growing)
@@ -166,6 +168,7 @@ This section documents key architectural choices and the reasoning behind them. 
 **Decision:** Use Hono instead of Express.js.
 
 **Why:**
+
 - Built for modern runtimes (Bun, Deno, Cloudflare Workers, Node.js)
 - Lightweight with excellent TypeScript support out of the box
 - Middleware patterns similar to Express but more modern
@@ -173,6 +176,7 @@ This section documents key architectural choices and the reasoning behind them. 
 - Strong ecosystem of middleware (CORS, JWT, Zod validation, etc.)
 
 **Trade-offs:**
+
 - Smaller community and fewer tutorials than Express
 - Less "googleable" when stuck — will need to rely on official docs
 - Some Express-specific middleware won't be directly compatible
@@ -182,6 +186,7 @@ This section documents key architectural choices and the reasoning behind them. 
 **Decision:** Use Prisma instead of raw SQL with a migration tool.
 
 **Why:**
+
 - Declarative schema definition (`schema.prisma`)
 - Auto-generated, type-safe client — queries return typed objects
 - Built-in migration system (`prisma migrate`)
@@ -190,6 +195,7 @@ This section documents key architectural choices and the reasoning behind them. 
 - Industry-standard ORM that's widely used in TypeScript projects
 
 **Trade-offs:**
+
 - Adds abstraction over raw SQL — less direct control
 - Generated queries may not always be optimally performant
 - Learning Prisma's schema language is its own thing
@@ -213,6 +219,7 @@ kiromoku/
 ```
 
 **Why:**
+
 - Single process, single port — Waku serves React pages and API routes together
 - Waku's built-in API routes use stable, documented APIs (unlike `waku/unstable_hono`)
 - API routes use Web Standards (Request/Response) — portable knowledge
@@ -223,7 +230,8 @@ kiromoku/
 - Appropriate complexity for a solo developer
 
 **Trade-offs accepted:**
-- A change to *any* code (frontend or API) redeploys the entire application
+
+- A change to _any_ code (frontend or API) redeploys the entire application
 - Frontend and backend are coupled in the same build — can't scale them independently
 - If the project grows significantly, extracting API routes into a standalone Hono service is a migration, not a rewrite
 
@@ -236,12 +244,14 @@ kiromoku/
 **Decision:** Fetch anime/manga metadata from MAL API on demand. Do not cache in our database for MVP.
 
 **Why:**
+
 - Keeps our schema simple and focused on user data
 - Always shows fresh data (titles, images, synopses)
 - Smaller database footprint
 - Learning focus is elsewhere
 
 **Trade-offs:**
+
 - Dependent on MAL API availability
 - Slower list page loads (multiple API calls)
 - Subject to MAL API rate limits
@@ -252,21 +262,23 @@ kiromoku/
 **Decision:** Use Better Auth as the authentication library instead of building auth from scratch or using Lucia/Auth.js.
 
 **Why:**
+
 - Framework-agnostic with first-class Hono integration
 - Built-in Prisma adapter — auth tables managed alongside our schema
 - Handles the hard security details: password hashing, session management, CSRF protection, secure cookies
 - Supports email/password auth out of the box, with social auth (Discord, etc.) available as plugins
 - TypeScript-first with strong type safety
 - Active development and good documentation
-- Lets us focus on *understanding* auth concepts rather than implementing cryptographic primitives
+- Lets us focus on _understanding_ auth concepts rather than implementing cryptographic primitives
 
 **Trade-offs:**
-- Adds a dependency for something we *could* build from scratch
+
+- Adds a dependency for something we _could_ build from scratch
 - Better Auth manages its own database tables (user, session, account, verification) — less control over schema
 - Newer library with a smaller community than Auth.js
 - Need to understand how it works under the hood, not just treat it as a black box
 
-**Important:** Using Better Auth does NOT mean skipping auth fundamentals. Phase 4 includes dedicated learning on authentication vs. authorization, session mechanics, password security, and cookie behavior. The library handles implementation, but we need to understand *what* it's doing and *why*.
+**Important:** Using Better Auth does NOT mean skipping auth fundamentals. Phase 4 includes dedicated learning on authentication vs. authorization, session mechanics, password security, and cookie behavior. The library handles implementation, but we need to understand _what_ it's doing and _why_.
 
 ---
 
@@ -420,45 +432,45 @@ Defined in `prisma/schema.prisma`. Below is the planned model structure:
 
 Better Auth creates and manages its own tables when using the Prisma adapter. These include:
 
-| Table | Purpose |
-|-------|---------|
-| user | User accounts (id, name, email, emailVerified, image, createdAt, updatedAt) |
-| session | Active sessions tied to users |
-| account | Auth provider accounts (email/password, OAuth providers) |
-| verification | Email verification and password reset tokens |
+| Table        | Purpose                                                                     |
+| ------------ | --------------------------------------------------------------------------- |
+| user         | User accounts (id, name, email, emailVerified, image, createdAt, updatedAt) |
+| session      | Active sessions tied to users                                               |
+| account      | Auth provider accounts (email/password, OAuth providers)                    |
+| verification | Email verification and password reset tokens                                |
 
 These tables are defined in your `schema.prisma` file but their structure is dictated by Better Auth. You extend the user model with additional fields (like `username`) as needed.
 
 **AnimeListEntry**
 
-| Field | Type | Notes |
-|-------|------|-------|
-| id | String (UUID) | `@id @default(uuid())` |
-| userId | String | Foreign key → User |
-| malId | Int | MAL's anime ID |
-| status | Enum | PLANNING, WATCHING, COMPLETED, DROPPED, ON_HOLD |
-| score | Int? | 1–10, nullable |
-| episodesWatched | Int | Default 0 |
-| notes | String? | Optional |
-| createdAt | DateTime | `@default(now())` |
-| updatedAt | DateTime | `@updatedAt` |
-| `@@unique([userId, malId])` | | Composite unique constraint |
+| Field                       | Type          | Notes                                           |
+| --------------------------- | ------------- | ----------------------------------------------- |
+| id                          | String (UUID) | `@id @default(uuid())`                          |
+| userId                      | String        | Foreign key → User                              |
+| malId                       | Int           | MAL's anime ID                                  |
+| status                      | Enum          | PLANNING, WATCHING, COMPLETED, DROPPED, ON_HOLD |
+| score                       | Int?          | 1–10, nullable                                  |
+| episodesWatched             | Int           | Default 0                                       |
+| notes                       | String?       | Optional                                        |
+| createdAt                   | DateTime      | `@default(now())`                               |
+| updatedAt                   | DateTime      | `@updatedAt`                                    |
+| `@@unique([userId, malId])` |               | Composite unique constraint                     |
 
 **MangaListEntry**
 
-| Field | Type | Notes |
-|-------|------|-------|
-| id | String (UUID) | `@id @default(uuid())` |
-| userId | String | Foreign key → User |
-| malId | Int | MAL's manga ID |
-| status | Enum | PLANNING, READING, COMPLETED, DROPPED, ON_HOLD |
-| score | Int? | 1–10, nullable |
-| chaptersRead | Int | Default 0 |
-| volumesRead | Int | Default 0 |
-| notes | String? | Optional |
-| createdAt | DateTime | `@default(now())` |
-| updatedAt | DateTime | `@updatedAt` |
-| `@@unique([userId, malId])` | | Composite unique constraint |
+| Field                       | Type          | Notes                                          |
+| --------------------------- | ------------- | ---------------------------------------------- |
+| id                          | String (UUID) | `@id @default(uuid())`                         |
+| userId                      | String        | Foreign key → User                             |
+| malId                       | Int           | MAL's manga ID                                 |
+| status                      | Enum          | PLANNING, READING, COMPLETED, DROPPED, ON_HOLD |
+| score                       | Int?          | 1–10, nullable                                 |
+| chaptersRead                | Int           | Default 0                                      |
+| volumesRead                 | Int           | Default 0                                      |
+| notes                       | String?       | Optional                                       |
+| createdAt                   | DateTime      | `@default(now())`                              |
+| updatedAt                   | DateTime      | `@updatedAt`                                   |
+| `@@unique([userId, malId])` |               | Composite unique constraint                    |
 
 ### Design Decision: Not Storing Metadata
 
@@ -517,7 +529,7 @@ We intentionally do NOT store anime/manga metadata (titles, images, synopses) in
 While backend APIs don't directly affect screen readers or keyboard navigation, they impact the accessible user experience:
 
 - **Error messages:** API error responses should be clear, human-readable, and actionable. A screen reader user needs to understand what went wrong and how to fix it.
-- **Validation messages:** Field-level validation errors should specify *which* field has the problem and *why* — the frontend will relay these to assistive technology.
+- **Validation messages:** Field-level validation errors should specify _which_ field has the problem and _why_ — the frontend will relay these to assistive technology.
 - **Status codes:** Use proper HTTP status codes so the frontend can provide appropriate, accessible feedback to users (e.g., distinguishing "not found" from "validation error" from "server error").
 
 **Practice:** When writing error responses, imagine explaining the problem to a friend, not a machine.
@@ -566,15 +578,16 @@ MAL Proxy (Phase 5)
 
 These two terms get thrown around together so often that it's easy to conflate them. They are distinct concepts:
 
-**Authentication (AuthN)** answers: *"Who are you?"*
+**Authentication (AuthN)** answers: _"Who are you?"_
 This is the process of verifying a user's identity. When someone types in their email and password and clicks "Log in," the system is authenticating them — confirming they are who they claim to be. Other forms of authentication include OAuth (signing in with Google/Discord), magic links, biometrics, and multi-factor authentication (MFA).
 
-**Authorization (AuthZ)** answers: *"What are you allowed to do?"*
-Once we know *who* someone is, authorization determines what they can access. Can this user view their own anime list? Can they edit someone else's list? Can they access admin settings? Authorization is about permissions and access control.
+**Authorization (AuthZ)** answers: _"What are you allowed to do?"_
+Once we know _who_ someone is, authorization determines what they can access. Can this user view their own anime list? Can they edit someone else's list? Can they access admin settings? Authorization is about permissions and access control.
 
 **In kiromoku's case:**
+
 - **AuthN:** A user registers an account and logs in with email/password. Better Auth handles this.
-- **AuthZ:** A logged-in user can only view and modify *their own* lists. Our API middleware handles this.
+- **AuthZ:** A logged-in user can only view and modify _their own_ lists. Our API middleware handles this.
 
 For the MVP, authorization is straightforward (users can only access their own data). But understanding the distinction matters because in a team or production app, authorization gets complex fast — roles, permissions, policies, resource-based access control.
 
@@ -842,12 +855,12 @@ Better Auth handles the critical security concerns (password hashing, session to
 
 ### Understanding Testing Types
 
-| Type | What It Tests | Tools | Speed |
-|------|---------------|-------|-------|
-| Unit | Individual functions, utilities, helpers in isolation | Vitest | Fast |
+| Type        | What It Tests                                           | Tools                     | Speed  |
+| ----------- | ------------------------------------------------------- | ------------------------- | ------ |
+| Unit        | Individual functions, utilities, helpers in isolation   | Vitest                    | Fast   |
 | Integration | Multiple units working together (API routes + database) | Vitest, Hono test helpers | Medium |
-| Component | React components render and behave correctly | Vitest, Testing Library | Medium |
-| End-to-End | Full user flows through a real browser | Playwright | Slow |
+| Component   | React components render and behave correctly            | Vitest, Testing Library   | Medium |
+| End-to-End  | Full user flows through a real browser                  | Playwright                | Slow   |
 
 ### Testing Philosophy
 
@@ -927,7 +940,7 @@ Focus on **practical, high-value tests** — not 100% coverage for its own sake:
 
 **CI (Continuous Integration)** is the practice of automatically running checks — linting, type checking, tests — every time code is pushed to the repository. The goal is to catch problems early and ensure that new code doesn't break what already works. Instead of finding out something is broken when you deploy, you find out within minutes of pushing.
 
-**CD (Continuous Deployment / Continuous Delivery)** extends this by automatically deploying code that passes all checks. "Continuous Delivery" means the code is always *ready* to deploy (maybe with a manual approval step). "Continuous Deployment" means it deploys automatically without human intervention. We'll use Continuous Delivery — automatic deploy to staging, manual approval for production.
+**CD (Continuous Deployment / Continuous Delivery)** extends this by automatically deploying code that passes all checks. "Continuous Delivery" means the code is always _ready_ to deploy (maybe with a manual approval step). "Continuous Deployment" means it deploys automatically without human intervention. We'll use Continuous Delivery — automatic deploy to staging, manual approval for production.
 
 **Why does this matter?**
 
@@ -1040,7 +1053,7 @@ jobs:
   deploy-production:
     needs: deploy-staging
     runs-on: ubuntu-latest
-    environment: production  # Requires manual approval
+    environment: production # Requires manual approval
     steps:
       # Deploy to production
 ```
@@ -1139,42 +1152,42 @@ Azure
 
 ### Cost Considerations
 
-| Service | Staging | Production | Notes |
-|---------|---------|------------|-------|
-| Container Apps | ~$0–20/mo | ~$20–50/mo | Scales to zero when idle |
-| PostgreSQL Flexible | ~$15/mo | ~$30/mo | Basic tier (Burstable B1ms) |
-| Container Registry | ~$5/mo | Shared | Basic tier sufficient |
-| Custom Domain | — | ~$12/year | Optional but professional |
+| Service             | Staging   | Production | Notes                       |
+| ------------------- | --------- | ---------- | --------------------------- |
+| Container Apps      | ~$0–20/mo | ~$20–50/mo | Scales to zero when idle    |
+| PostgreSQL Flexible | ~$15/mo   | ~$30/mo    | Basic tier (Burstable B1ms) |
+| Container Registry  | ~$5/mo    | Shared     | Basic tier sufficient       |
+| Custom Domain       | —         | ~$12/year  | Optional but professional   |
 
-*Estimate: ~$50–100/month for both environments at low usage. Set budget alerts.*
+_Estimate: ~$50–100/month for both environments at low usage. Set budget alerts._
 
 ### Staging vs. Production
 
-| Aspect | Staging | Production |
-|--------|---------|------------|
-| Deploy trigger | Auto on merge to `main` | Manual approval |
-| Database | Separate, can be reset freely | Protected, backed up |
-| Data | Seed/test data | Real user data |
-| Access | You only | Public |
-| Monitoring | Basic logging | Full alerting |
-| Purpose | Verify before going live | Serve real users |
+| Aspect         | Staging                       | Production           |
+| -------------- | ----------------------------- | -------------------- |
+| Deploy trigger | Auto on merge to `main`       | Manual approval      |
+| Database       | Separate, can be reset freely | Protected, backed up |
+| Data           | Seed/test data                | Real user data       |
+| Access         | You only                      | Public               |
+| Monitoring     | Basic logging                 | Full alerting        |
+| Purpose        | Verify before going live      | Serve real users     |
 
 ---
 
 ## Learning Objectives by Phase
 
-| Phase | Primary Skills | Secondary Skills |
-|-------|---------------|------------------|
-| 1 | Bun runtime, TypeScript config, project structure | Tooling (Oxlint/Oxfmt), Linear setup |
-| 2 | Docker, Prisma schema design | Containerization, migrations, ERD thinking |
-| 3 | Waku API routes, REST API design | Prisma queries, validation, error handling |
-| 4 | AuthN vs. AuthZ, Better Auth integration | Sessions, cookies, security, middleware patterns |
-| 5 | Third-party API integration | Rate limiting, proxy pattern, typing external data |
-| 6 | React + Waku, Tailwind, shadcn/ui | Server/client components, design system implementation |
-| 7 | Full-stack feature building, polish | UX patterns, accessibility, responsive design |
-| 8 | Testing strategies and tooling | Vitest, Playwright, mocking, test architecture |
-| 9 | GitHub Actions, CI/CD concepts | Automation, workflow design, environment management |
-| 10 | Azure cloud deployment | Infrastructure, containers in production, cost management |
+| Phase | Primary Skills                                    | Secondary Skills                                          |
+| ----- | ------------------------------------------------- | --------------------------------------------------------- |
+| 1     | Bun runtime, TypeScript config, project structure | Tooling (Oxlint/Oxfmt), Linear setup                      |
+| 2     | Docker, Prisma schema design                      | Containerization, migrations, ERD thinking                |
+| 3     | Waku API routes, REST API design                  | Prisma queries, validation, error handling                |
+| 4     | AuthN vs. AuthZ, Better Auth integration          | Sessions, cookies, security, middleware patterns          |
+| 5     | Third-party API integration                       | Rate limiting, proxy pattern, typing external data        |
+| 6     | React + Waku, Tailwind, shadcn/ui                 | Server/client components, design system implementation    |
+| 7     | Full-stack feature building, polish               | UX patterns, accessibility, responsive design             |
+| 8     | Testing strategies and tooling                    | Vitest, Playwright, mocking, test architecture            |
+| 9     | GitHub Actions, CI/CD concepts                    | Automation, workflow design, environment management       |
+| 10    | Azure cloud deployment                            | Infrastructure, containers in production, cost management |
 
 ---
 
@@ -1229,5 +1242,5 @@ Azure
 
 ---
 
-*Document created: February 2026*
-*Last updated: February 2026*
+_Document created: February 2026_
+_Last updated: February 2026_

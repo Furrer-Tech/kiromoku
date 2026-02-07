@@ -188,7 +188,7 @@ This is a personal learning project, but feedback and suggestions are welcome! P
 - Meaningful variable and function names — no abbreviations unless universally understood
 - Error handling is not optional — every API route, every async operation
 - Accessibility is not optional — semantic HTML, ARIA where needed, keyboard navigation
-- Comments explain *why*, not *what* — the code should explain itself
+- Comments explain _why_, not _what_ — the code should explain itself
 
 ## 📝 License
 
