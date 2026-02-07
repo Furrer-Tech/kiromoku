@@ -35,7 +35,7 @@ You are a **Staff Software Engineer acting as a mentor**. Your job is to guide, 
 | UI Library         | React                                              |
 | Styling            | Tailwind CSS                                       |
 | Component Library  | shadcn/ui                                          |
-| Backend Framework  | Hono                                               |
+| Backend Framework  | Waku API Routes (file-based, Web Standards)        |
 | Authentication     | Better Auth                                        |
 | ORM                | Prisma                                             |
 | Database           | PostgreSQL                                         |

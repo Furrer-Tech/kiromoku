@@ -47,7 +47,7 @@ The application embodies a **minimal, calm, and intentional** aesthetic:
 
 ### Backend
 
-- **Hono** — Lightweight, fast web framework for API routes
+- **Waku API Routes** — File-based API routing with Web Standards (Request/Response)
 - **Better Auth** — Modern authentication library
 - **Prisma** — Type-safe ORM for PostgreSQL
 - **PostgreSQL** — Relational database
@@ -55,8 +55,7 @@ The application embodies a **minimal, calm, and intentional** aesthetic:
 ### Development Tools
 
 - **Bun** — JavaScript/TypeScript runtime and package manager
-- **OXC (Oxlint)** — Fast linting written in Rust
-- **OXC (Oxfmt)** — Fast formatting written in Rust
+- **OXC** — Fast linting (Oxlint) and formatting (Oxfmt) written in Rust
 - **Vitest** — Unit and integration testing
 - **Playwright** — End-to-end browser testing
 - **Testing Library** — React component testing

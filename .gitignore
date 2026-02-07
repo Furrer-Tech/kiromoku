@@ -94,7 +94,6 @@ Desktop.ini
 # IDE / Editor
 # ============================================
 # VS Code
-.vscode/settings.json
 .vscode/launch.json
 .vscode/tasks.json
 # Keep .vscode/extensions.json so team can share recommended extensions
