@@ -1,7 +1,125 @@
-node_modules
-dist
-.env*
-*.tsbuildinfo
-.cache
-.DS_Store
+# .gitignore for kiromoku
+
+# From Waku create
 *.pem
+
+# This file tells Git which files and folders to ignore (not track or commit)
+
+# ============================================
+# Dependencies
+# ============================================
+# node_modules/ contains all installed packages
+# This folder can be massive and is regenerated from package.json
+# Always ignore this - use package.json + bun.lockb to recreate it
+node_modules/
+
+# ============================================
+# Environment Variables & Secrets
+# ============================================
+# .env files contain sensitive data like API keys, database passwords, etc.
+# NEVER commit these to version control
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# ============================================
+# Build Outputs
+# ============================================
+# These are generated files from the build process
+# They can be recreated anytime by running the build command
+dist/
+build/
+.waku/
+*.tsbuildinfo
+
+# ============================================
+# Logs
+# ============================================
+# Log files generated during development or runtime
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+bun-debug.log*
+
+# ============================================
+# Testing
+# ============================================
+# Test coverage reports - can be regenerated
+coverage/
+.nyc_output/
+
+# Playwright browser binaries and test results
+playwright/.cache/
+test-results/
+playwright-report/
+
+# ============================================
+# Prisma
+# ============================================
+# Prisma generates a client library based on schema.prisma
+# This is regenerated with `prisma generate`, so we don't commit it
+# NOTE: We DO commit migrations/ folder - those are our database history
+node_modules/.prisma/
+*.db
+*.db-journal
+
+# ============================================
+# Docker
+# ============================================
+# Don't ignore Dockerfile or docker-compose.yml - those are infrastructure as code
+# But ignore local Docker overrides if you create them
+docker-compose.override.yml
+
+# ============================================
+# Operating System Files
+# ============================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+
+# ============================================
+# IDE / Editor
+# ============================================
+# VS Code
+.vscode/settings.json
+.vscode/launch.json
+.vscode/tasks.json
+# Keep .vscode/extensions.json so team can share recommended extensions
+
+# JetBrains IDEs (WebStorm, IntelliJ, etc.)
+.idea/
+
+# Vim
+*.swp
+*.swo
+*.swn
+
+# ============================================
+# Temporary Files
+# ============================================
+*.tmp
+*.temp
+.cache/
+.temp/
+
+# ============================================
+# Miscellaneous
+# ============================================
+# Azure or cloud credentials (if stored locally during dev)
+.azure/
+
+# Debugging artifacts
+.vscode-test/
