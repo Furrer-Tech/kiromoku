@@ -195,16 +195,16 @@ This section documents key architectural choices and the reasoning behind them. 
 - Learning Prisma's schema language is its own thing
 - Understanding raw SQL underneath is still important (and we will learn it)
 
-### ADR-004: Integrated Project Structure (Waku + Hono Middleware)
+### ADR-004: Integrated Project Structure (Waku with Built-in API Routes)
 
-**Decision:** Use an integrated architecture where Hono runs as middleware within Waku's server. Single project, single deploy.
+**Decision:** Use Waku as a single integrated framework for both React pages and API routes. Waku uses Hono internally, so API routes benefit from Hono's performance without manual integration. Single project, single deploy.
 
 ```
 kiromoku/
 ├── src/
-│   ├── pages/          # Waku routes (React)
+│   ├── pages/          # Waku routes (React pages + API routes)
+│   │   └── api/        # API routes (file-based, e.g. api/health.ts → /api/health)
 │   ├── components/     # React components
-│   ├── api/            # Hono API routes
 │   └── lib/            # Shared utilities
 ├── prisma/
 │   └── schema.prisma
@@ -213,7 +213,9 @@ kiromoku/
 ```
 
 **Why:**
-- Single process, single port — Waku serves React pages, Hono handles `/api/*` routes
+- Single process, single port — Waku serves React pages and API routes together
+- Waku's built-in API routes use stable, documented APIs (unlike `waku/unstable_hono`)
+- API routes use Web Standards (Request/Response) — portable knowledge
 - Two Docker containers total (app + Postgres) instead of three
 - No cross-service networking to configure
 - Shared types and utilities without workspace wiring
@@ -223,9 +225,11 @@ kiromoku/
 **Trade-offs accepted:**
 - A change to *any* code (frontend or API) redeploys the entire application
 - Frontend and backend are coupled in the same build — can't scale them independently
-- If the project grows significantly, extracting Hono into its own service is a migration, not a rewrite
+- If the project grows significantly, extracting API routes into a standalone Hono service is a migration, not a rewrite
 
 **Alternative considered:** Monorepo with separate `apps/web` and `apps/api` packages. Rejected because the added complexity (workspace config, separate Docker containers, cross-service communication) isn't justified at this scale.
+
+**Alternative considered:** Manually mounting Hono as middleware via `waku/unstable_hono`. Rejected because the `unstable_` prefix indicates the API may change, and Waku's built-in API routes provide sufficient functionality for our needs.
 
 ### ADR-005: Not Storing MAL Metadata Locally
 
@@ -329,15 +333,15 @@ Phase 10: Cloud Deployment
    - Install browser extensions for development: axe DevTools, WAVE
    - Understand WCAG 2.1 AA standard basics — what it is and why it matters
 
-7. **Set up Waku + Hono integration**
+7. **Set up Waku with API routes**
    - Initialize Waku project
-   - Mount Hono as middleware within Waku's server
+   - Create API routes using Waku's built-in file-based API routing
    - Verify a basic API route (`GET /api/health`) works alongside a React page
 
 ### Deliverables
 
 - [ ] Bun installed and working
-- [ ] Integrated project structure scaffolded (Waku + Hono)
+- [ ] Integrated project structure scaffolded (Waku with API routes)
 - [ ] Basic health check API route returning a response
 - [ ] TypeScript compiling across the project
 - [ ] Oxlint and Oxfmt configured and running
@@ -351,7 +355,7 @@ Phase 10: Cloud Deployment
 - How does `bun install` differ from `npm install`?
 - What do `tsconfig.json` options actually control?
 - How does TypeScript compilation work?
-- How Waku serves React pages and how Hono mounts as middleware within it
+- How Waku serves React pages and API routes using its built-in file-based routing
 - What is WCAG and why does accessibility matter from day one?
 
 ---
@@ -468,10 +472,9 @@ We intentionally do NOT store anime/manga metadata (titles, images, synopses) in
 
 ### Tasks
 
-1. **Set up Hono with TypeScript**
-   - Initialize Hono application
-   - Understand Hono's routing and middleware model
-   - Configure middleware (CORS, JSON parsing, logging)
+1. **Configure API middleware and environment variables**
+   - Understand how Waku's API routes work (Hono under the hood)
+   - Configure middleware (CORS, logging)
    - Environment variables with Bun's built-in `process.env` or `.env` support
 
 2. **Integrate Prisma client**
@@ -480,9 +483,9 @@ We intentionally do NOT store anime/manga metadata (titles, images, synopses) in
    - Understand connection pooling with Prisma
 
 3. **Build API routes**
-   - RESTful route structure using Hono's router
-   - Request validation (Hono's built-in validators or Zod integration)
-   - Error handling middleware
+   - RESTful route structure using Waku's file-based API routing
+   - Request validation with Zod
+   - Error handling patterns
    - Response formatting and typing
 
 4. **Implement CRUD operations**
@@ -493,7 +496,7 @@ We intentionally do NOT store anime/manga metadata (titles, images, synopses) in
 
 ### Deliverables
 
-- [ ] Organized Hono application structure
+- [ ] Organized API route structure
 - [ ] Prisma queries working from API routes
 - [ ] Full CRUD for anime and manga list entries
 - [ ] Request validation on all mutation endpoints
@@ -502,7 +505,7 @@ We intentionally do NOT store anime/manga metadata (titles, images, synopses) in
 
 ### Key Learnings
 
-- Hono's middleware and routing patterns
+- Waku API routing and middleware patterns (Hono under the hood)
 - RESTful API design principles
 - Type-safe database queries with Prisma
 - Request validation strategies
@@ -1164,7 +1167,7 @@ Azure
 |-------|---------------|------------------|
 | 1 | Bun runtime, TypeScript config, project structure | Tooling (Oxlint/Oxfmt), Linear setup |
 | 2 | Docker, Prisma schema design | Containerization, migrations, ERD thinking |
-| 3 | Hono framework, REST API design | Prisma queries, validation, error handling |
+| 3 | Waku API routes, REST API design | Prisma queries, validation, error handling |
 | 4 | AuthN vs. AuthZ, Better Auth integration | Sessions, cookies, security, middleware patterns |
 | 5 | Third-party API integration | Rate limiting, proxy pattern, typing external data |
 | 6 | React + Waku, Tailwind, shadcn/ui | Server/client components, design system implementation |

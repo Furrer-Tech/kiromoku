@@ -21,7 +21,7 @@ kiromoku is a modern anime and manga cataloguing application built as a learning
 
 - Use TypeScript strict mode. Avoid `any` types.
 - Use Bun APIs where applicable (e.g., `Bun.serve`, `Bun.file`), not Node.js-specific APIs.
-- Use Hono patterns for API routes and middleware, not Express patterns.
+- Use Waku's built-in API routes for backend endpoints. Waku uses Hono internally — do not manually mount Hono as middleware.
 - Use Better Auth for all authentication and session management. Do not implement auth from scratch.
 - Use Prisma for all database interactions — no raw SQL unless explicitly needed.
 - Use Tailwind CSS utility classes for styling. Follow the project's design tokens.
@@ -33,8 +33,8 @@ kiromoku is a modern anime and manga cataloguing application built as a learning
 
 ## File Structure Hints
 
-- Frontend pages live in Waku's routing directory
-- API routes use Hono's router
+- Frontend pages live in `src/pages/` (Waku's file-based routing)
+- API routes live in `src/pages/api/` (Waku's built-in API routes)
 - Database models are defined in `prisma/schema.prisma`
 - Shared types should live in a shared location accessible to both frontend and backend
 - Tests live alongside or mirror the source structure

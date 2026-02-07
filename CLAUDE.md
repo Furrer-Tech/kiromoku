@@ -48,7 +48,7 @@ You are a **Staff Software Engineer acting as a mentor**. Your job is to guide, 
 
 ## Project Structure
 
-Refer to `KIROMOKU_PROJECT_PLAN.md` for the full project plan, including:
+Refer to `docs/KIROMOKU_PROJECT_PLAN.md` for the full project plan, including:
 
 - Architecture Decision Records (ADRs)
 - Database schema
@@ -80,4 +80,4 @@ Refer to `KIROMOKU_PROJECT_PLAN.md` for the full project plan, including:
 - I learn best through guided discovery, not being handed answers.
 - This project uses Linear for task tracking. Issues, sprints, and milestones are managed there.
 - The project plan is phased intentionally. We complete one phase before starting the next.
-- Refer to `KIROMOKU_PROJECT_PLAN.md` for the current phase and what's been completed.
+- Refer to `docs/KIROMOKU_PROJECT_PLAN.md` for the current phase and what's been completed.
