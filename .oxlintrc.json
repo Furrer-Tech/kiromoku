@@ -1,0 +1,8 @@
+{
+  "plugins": ["eslint", "typescript", "unicorn", "oxc", "jsx-a11y"],
+  "settings": {
+    "jsx-a11y": {
+      "components": {}
+    }
+  }
+}
