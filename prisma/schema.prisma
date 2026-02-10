@@ -12,3 +12,51 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+enum AnimeStatus {
+  PLAN_TO_WATCH
+  WATCHING
+  COMPLETED
+  DROPPED
+  ON_HOLD
+}
+
+enum MangaStatus {
+  PLAN_TO_READ
+  READING
+  COMPLETED
+  DROPPED
+  ON_HOLD
+}
+
+model AnimeListEntry {
+  id              String   @id @default(uuid())
+  malId           Int
+  userId          String
+  imageUrl        String
+  japaneseTitle   String
+  englishTitle    String
+  status          AnimeStatus
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([userId])
+  @@unique([malId, userId])
+}
+
+model MangaListEntry {
+  id              String   @id @default(uuid())
+  malId           Int
+  userId          String
+  imageUrl        String
+  japaneseTitle   String
+  englishTitle    String
+  status          MangaStatus
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([userId])
+  @@unique([malId, userId])
+}
+
+
