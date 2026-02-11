@@ -4,6 +4,14 @@
 // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
+// On field ordering: There's no strict rule, but there's a common convention that most teams follow:
+
+// id first (primary key)
+// Foreign keys and relations next (userId, user)
+// Core business fields (the main data of the model)
+// Optional/nullable fields
+// Timestamps last (createdAt, updatedAt)
+
 generator client {
   provider = "prisma-client"
   output   = "../generated/prisma"
@@ -29,34 +37,86 @@ enum MangaStatus {
   ON_HOLD
 }
 
+model User {
+  id               String           @id @default(uuid())
+  name             String
+  email            String           @unique
+  emailVerified    Boolean          @default(false)
+  image            String?                                // Profile picture URL from OAuth provider
+  sessions         Session[]
+  accounts         Account[]
+  animeListEntries AnimeListEntry[]
+  mangaListEntries MangaListEntry[]
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
+}
+
+model Session {
+  id        String   @id @default(uuid())
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  token     String   @unique
+  expiresAt DateTime
+  ipAddress String?                                       // Captured for security auditing
+  userAgent String?                                       // Captured for security auditing
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Account {
+  id                    String    @id @default(uuid())
+  user                  User      @relation(fields: [userId], references: [id])
+  userId                String
+  accountId             String                            // Provider's user ID, or equal to userId for credential accounts
+  providerId            String                            // e.g. "github", "google", "credential"
+  accessToken           String?                           // OAuth token returned by provider
+  refreshToken          String?                           // OAuth refresh token returned by provider
+  accessTokenExpiresAt  DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope                 String?                           // OAuth scope granted by provider
+  idToken               String?                           // OIDC ID token returned by provider
+  password              String?                           // Hashed password for credential-based auth
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+}
+
+model Verification {
+  id         String   @id @default(uuid())
+  identifier String                                       // What is being verified (e.g. email address)
+  value      String                                       // The verification token/code
+  expiresAt  DateTime
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
 model AnimeListEntry {
-  id              String   @id @default(uuid())
-  malId           Int
-  userId          String
-  imageUrl        String
-  japaneseTitle   String
-  englishTitle    String
-  status          AnimeStatus
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
+  id            String      @id @default(uuid())
+  user          User        @relation(fields: [userId], references: [id])
+  userId        String
+  malId         Int                                       // MyAnimeList API ID for fetching anime data
+  imageUrl      String
+  japaneseTitle String
+  englishTitle  String
+  status        AnimeStatus
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
 
   @@index([userId])
   @@unique([malId, userId])
 }
 
 model MangaListEntry {
-  id              String   @id @default(uuid())
-  malId           Int
-  userId          String
-  imageUrl        String
-  japaneseTitle   String
-  englishTitle    String
-  status          MangaStatus
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
+  id            String      @id @default(uuid())
+  user          User        @relation(fields: [userId], references: [id])
+  userId        String
+  malId         Int                                       // MyAnimeList API ID for fetching manga data
+  imageUrl      String
+  japaneseTitle String
+  englishTitle  String
+  status        MangaStatus
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
 
   @@index([userId])
   @@unique([malId, userId])
 }
-
-
